@@ -1,81 +1,54 @@
-Task Management API Documentation
-Endpoints
+# Task Management API Documentation
 
-1. Get All Tasks
-   URL: /tasks
-   Method: GET
-   Description: Allows admin users to fetch all tasks in the system.
-   Headers:
-   Authorization: Basic Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoxMjN9.pwqgNnGWrs0mwkVJlcNSQjsBBK98wbZtOl8Y-cM3hJo Admin Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqYW5lLnNtaXRoQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOjEyM30.N0XyxvraWN9ZgUgQXh-2Nt250Fwen1UserVOVD-Qae8
-   Response Codes:
-   200 OK: Returns a list of tasks.
-   403 Forbidden: Access denied for non-admin users.
-   500 Internal Server Error: If there is a server or database issue.
-   Example Request:
+## 1. **Get All Tasks**
+- **URL**: `/tasks`
+- **Method**: `GET`
+- **Description**: Fetches all tasks in the system (accessible only by admin users).
 
-http
+### **Headers**:
+- `Authorization`: `Basic Bearer <token>`
 
-GET /tasks
-Authorization: Basic Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoxMjN9.pwqgNnGWrs0mwkVJlcNSQjsBBK98wbZtOl8Y-cM3hJo Admin Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqYW5lLnNtaXRoQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOjEyM30.N0XyxvraWN9ZgUgQXh-2Nt250Fwen1UserVOVD-Qae8
-Example Response:
+### **Response Codes**:
+- **200 OK**: Returns a list of tasks.
+- **403 Forbidden**: Access denied for non-admin users.
+- **500 Internal Server Error**: If there is a server or database issue.
 
-json
+---
 
-[
+## 2. **Get User's Tasks**
+- **URL**: `/tasks/user/:userId`
+- **Method**: `GET`
+- **Description**: Fetches all tasks assigned to a specific user. Basic users can only access their own tasks.
+
+### **Path Parameters**:
+- `userId`: ID of the user whose tasks are being fetched.
+
+### **Headers**:
+- `Authorization`: `Basic Bearer <token>`
+
+### **Response Codes**:
+- **200 OK**: Returns tasks for the specified user.
+- **403 Forbidden**: Basic user attempting to access another user's tasks.
+- **404 Not Found**: No tasks found for the specified user.
+- **500 Internal Server Error**: Server or database error.
+
+---
+
+## 3. **Create Task**
+- **URL**: `/tasks`
+- **Method**: `POST`
+- **Description**: Creates a new task in the system. Admin users can create tasks for any user, while basic users can only create tasks for themselves.
+
+### **Headers**:
+- `Authorization`: `Basic Bearer <token>`
+
+### **Request Body**:
+```json
 {
-"id": 1,
-"body": "Complete project documentation",
-"user_id": 2,
-"created_at": "2024-12-01T10:30:00Z"
-}
-]
-
-2. Get User's Tasks
-   URL: /tasks/user/:userId
-   Method: GET
-   Description: Fetches all tasks assigned to the specified user. Basic users can only access their own tasks.
-   Path Parameters:
-   userId: ID of the user whose tasks are being fetched.
-   Headers:
-   Authorization: Basic Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoxMjN9.pwqgNnGWrs0mwkVJlcNSQjsBBK98wbZtOl8Y-cM3hJo Admin Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqYW5lLnNtaXRoQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOjEyM30.N0XyxvraWN9ZgUgQXh-2Nt250Fwen1UserVOVD-Qae8
-   Response Codes:
-   200 OK: Returns tasks for the specified user.
-   403 Forbidden: Basic user attempting to access another user's tasks.
-   404 Not Found: No tasks found for the specified user.
-   500 Internal Server Error: Server or database error.
-   Example Request:
-
-http
-
-GET /tasks/user/2
-Authorization: Basic Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoxMjN9.pwqgNnGWrs0mwkVJlcNSQjsBBK98wbZtOl8Y-cM3hJo Admin Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqYW5lLnNtaXRoQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOjEyM30.N0XyxvraWN9ZgUgQXh-2Nt250Fwen1UserVOVD-Qae8
-Example Response:
-
-json
-
-[
-{
-"id": 5,
-"body": "Fix production bug",
-"user_id": 2,
-"created_at": "2024-12-05T08:15:00Z"
-}
-]
-
-3. Create a Task
-   URL: /tasks
-   Method: POST
-   Description: Allows admins to create a new task for a specified user.
-   Headers:
-   Authorization: Basic Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoxMjN9.pwqgNnGWrs0mwkVJlcNSQjsBBK98wbZtOl8Y-cM3hJo Admin Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqYW5lLnNtaXRoQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOjEyM30.N0XyxvraWN9ZgUgQXh-2Nt250Fwen1UserVOVD-Qae8
-   Request Body:
-   json
-
-{
-"body": "Task description",
-"userId": 3
-}
-Response Codes:
+  "body": "Task description",
+  "user_id": 2
+}```
+### Response Codes:
 201 Created: Task created successfully.
 400 Bad Request: Invalid or missing task data.
 403 Forbidden: Non-admin attempting to create a task.
@@ -101,7 +74,7 @@ json
 "id": 15
 }
 
-4. Update a Task
+## 4. **Update a Task
    URL: /tasks/:id
    Method: PUT
    Description: Updates the description of an existing task. Admins can update any task, while basic users can only update their own tasks.
