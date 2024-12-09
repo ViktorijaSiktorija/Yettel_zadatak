@@ -134,7 +134,7 @@ json
 "message": "Task deleted successfully"
 }
 
-##6. **Get All Users**
+## 6. **Get All Users**
    URL: /users
    Method: GET
    Description: Fetches a list of all users in the system. Only accessible by admin users.
