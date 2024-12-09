@@ -72,38 +72,47 @@ json
 }
 
 ## 4. **Update a Task**
-   URL: /tasks/:id
-   Method: PUT
-   Description: Updates the description of an existing task. Admins can update any task, while basic users can only update their own tasks.
-   Path Parameters:
-   id: ID of the task to update.
-   Headers:
-##**Authorization**: 
-##**Basic Bearer** eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoxMjN9.pwqgNnGWrs0mwkVJlcNSQjsBBK98wbZtOl8Y-cM3hJo
-##**Admin Bearer** eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqYW5lLnNtaXRoQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOjEyM30.N0XyxvraWN9ZgUgQXh-2Nt250Fwen1UserVOVD-Qae8
-Content-Type: application/json
-   Request Body:
-   json
 
-{
-"body": "Updated task description"
-}
-Response Codes:
-200 OK: Task updated successfully.
-400 Bad Request: Invalid task data.
-403 Forbidden: User not authorized to update the task.
-404 Not Found: Task not found.
-500 Internal Server Error: Server or database error.
-Example Request:
+- **URL**: `/tasks/:id`
+- **Method**: `PUT`
+- **Description**: Updates the description of an existing task.  
+  - Admins can update any task.  
+  - Basic users can only update their own tasks.
+
+### Path Parameters:
+- `id`: ID of the task to update.
+
+### Headers:
+- **Authorization**:  
+  - **Basic Bearer**:  
+    `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoxMjN9.pwqgNnGWrs0mwkVJlcNSQjsBBK98wbZtOl8Y-cM3hJo`  
+  - **Admin Bearer**:  
+    `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqYW5lLnNtaXRoQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOjEyM30.N0XyxvraWN9ZgUgQXh-2Nt250Fwen1UserVOVD-Qae8`
+- **Content-Type**: `application/json`
+
+
+## Response Codes
+
+### General
+- **200 OK**: Task updated successfully.
+- **400 Bad Request**: Invalid task data.
+- **403 Forbidden**: User not authorized to update the task.
+- **404 Not Found**: Task not found.
+- **500 Internal Server Error**: Server or database error.
+
+---
+
+### Example Request
 
 http
-
 PUT /tasks/10
-##**Authorization**: 
-##**Basic Bearer** eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoxMjN9.pwqgNnGWrs0mwkVJlcNSQjsBBK98wbZtOl8Y-cM3hJo
-##**Admin Bearer** eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqYW5lLnNtaXRoQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOjEyM30.N0XyxvraWN9ZgUgQXh-2Nt250Fwen1UserVOVD-Qae8
+Authorization: Basic Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoxMjN9.pwqgNnGWrs0mwkVJlcNSQjsBBK98wbZtOl8Y-cM3hJo
+Authorization: Admin Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqYW5lLnNtaXRoQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOjEyM30.N0XyxvraWN9ZgUgQXh-2Nt250Fwen1UserVOVD-Qae8
 Content-Type: application/json
-Content-Type: application/json
+
+{
+  "body": "Complete API testing"
+}
 
 {
 "body": "Complete API testing"
