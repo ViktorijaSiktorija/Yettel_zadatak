@@ -42,23 +42,17 @@
 ### **Headers**:
 - `Authorization`: `Basic Bearer <token>`
 
-### **Request Body**:
-```json
-{
-  "body": "Task description",
-  "user_id": 2
-}```
+
+
 ### Response Codes:
 201 Created: Task created successfully.
 400 Bad Request: Invalid or missing task data.
 403 Forbidden: Non-admin attempting to create a task.
 500 Internal Server Error: Server or database error.
-Example Request:
 
-http
 
-POST /tasks
-Authorization: Basic Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoxMjN9.pwqgNnGWrs0mwkVJlcNSQjsBBK98wbZtOl8Y-cM3hJo Admin Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqYW5lLnNtaXRoQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOjEyM30.N0XyxvraWN9ZgUgQXh-2Nt250Fwen1UserVOVD-Qae8
+### POST /tasks
+- **Authorization: Basic Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoxMjN9.pwqgNnGWrs0mwkVJlcNSQjsBBK98wbZtOl8Y-cM3hJo Admin Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJqYW5lLnNtaXRoQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOjEyM30.N0XyxvraWN9ZgUgQXh-2Nt250Fwen1UserVOVD-Qae8
 Content-Type: application/json
 
 {
@@ -74,7 +68,7 @@ json
 "id": 15
 }
 
-## 4. **Update a Task
+## 4. **Update a Task**
    URL: /tasks/:id
    Method: PUT
    Description: Updates the description of an existing task. Admins can update any task, while basic users can only update their own tasks.
@@ -113,7 +107,7 @@ json
 "message": "Task updated successfully"
 }
 
-5. Delete a Task
+## 5. **Delete a Task**
    URL: /tasks/:id
    Method: DELETE
    Description: Deletes a specified task. Only admins can perform this action.
@@ -140,7 +134,7 @@ json
 "message": "Task deleted successfully"
 }
 
-6. Get All Users
+##6. **Get All Users**
    URL: /users
    Method: GET
    Description: Fetches a list of all users in the system. Only accessible by admin users.
@@ -175,6 +169,7 @@ json
 "role": "basic"
 }
 ]
+
 Notes:
 Ensure the Authorization header contains a valid token.
 The user roles (admin, basic) dictate access permissions for each endpoint.
