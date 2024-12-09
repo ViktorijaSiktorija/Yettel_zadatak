@@ -77,7 +77,7 @@ Before setting up the project, ensure you have the following installed:
 
 ### User Management
 
-- **View User by ID**: *(Feature not implemented yet)*
+- **Admin**: List all users: `GET /users`
 
 ---
 
