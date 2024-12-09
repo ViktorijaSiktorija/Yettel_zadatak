@@ -29,8 +29,10 @@ Before setting up the project, ensure you have the following installed:
 1. **Clone the repository**:
 
     ```bash
-    git clone <repository_url>
-    cd <repository_folder>
+    git clone Yettel_zadatak
+
+    cd Yettel_zadatak
+
     ```
 
 2. **Install dependencies**:
